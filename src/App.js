@@ -8,6 +8,7 @@ import Footer from './Components/Footer/Footer';
 
 function App() {
   const [videos, setVideos] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
     const fetchData = async () => {
@@ -39,12 +40,25 @@ function App() {
     }
   };
 
+  const handleSearch = (term) => {
+    setSearchTerm(term);
+  };
+
   return (
     <div className="app-container">
       <Navbar />
       <AddVideo handleAddVideo={handleAdd} />
+      <div className="search-bar">
+        <input
+          className="search-input"
+          type="text"
+          placeholder="Search by title"
+          value={searchTerm}
+          onChange={(e) => handleSearch(e.target.value)}
+        />
+      </div>
       <div className="video-list">
-        <VideoTable videos={videos} handleRemove={handleRemove} />
+        <VideoTable videos={videos} handleRemove={handleRemove} searchTerm={searchTerm} />
       </div>
       <Footer />
     </div>

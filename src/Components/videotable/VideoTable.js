@@ -15,10 +15,14 @@ function convertWatchToEmbedLink(watchLink) {
   }
 }
 
-const VideoTable = ({ videos, handleRemove }) => {
+const VideoTable = ({ videos, handleRemove, searchTerm }) => {
+  const filteredVideos = videos.filter(video =>
+    video.title.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
     <div className="video-grid">
-      {videos.map((video) => (
+      {filteredVideos.map((video) => (
         <div className="video-card" key={video.id}>
           <h2>{video.title}</h2>
           <div className="video-container">
