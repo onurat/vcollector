@@ -1,0 +1,12 @@
+.navbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #282c34;
+    color: white;
+    height: 60px;
+   }
+   
+   .navbar h1 {
+    margin: 0;
+   }
