@@ -13,7 +13,7 @@ function App() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/');
+        const response = await axios.get('https://video-collector-api.onrender.com');
         setVideos(response.data);
       } catch (error) {
         console.error('Error fetching data from the server:', error);
@@ -29,7 +29,7 @@ function App() {
 
   const handleRemove = async (videoId) => {
     try {
-      const response = await axios.delete(`http://localhost:5000/${videoId}`);
+      const response = await axios.delete(`https://video-collector-api.onrender.com${videoId}`);
       if (response.status === 200) {
         setVideos((prevVideos) => prevVideos.filter((video) => video.id !== videoId));
       } else {
