@@ -30,6 +30,7 @@ function App() {
   const handleRemove = async (videoId) => {
     try {
       const response = await axios.delete(`https://video-collector-api.onrender.com/${videoId}`);
+      console.log('Delete Response:', response); 
       if (response.status === 200) {
         setVideos((prevVideos) => prevVideos.filter((video) => video.id !== videoId));
       } else {
