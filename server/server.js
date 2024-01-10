@@ -64,12 +64,12 @@ app.get("/:id", async (req, res) => {
   }
 });
 
-app.delete("/:title", async (req, res) => {
-  const videoTitle = req.params.title;
+app.delete("/:id", async (req, res) => {
+  const videoId = req.params.id;
 
   try {
-    const query = "DELETE FROM videos WHERE title = $1";
-    await db.query(query, [videoTitle]);
+    const query = "DELETE FROM videos WHERE id = $1";
+    await db.query(query, [videoId]);
 
     res.json({ result: "success", message: "Video deleted successfully" });
   } catch (error) {
