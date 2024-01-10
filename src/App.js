@@ -29,7 +29,8 @@ function App() {
 
   const handleRemove = async (videoId) => {
     try {
-      const response = await axios.delete(`https://video-collector-api.onrender.com${videoId}`);
+      const response = await axios.delete(`https://video-collector-api.onrender.com/${videoId}`);
+
       if (response.status === 200) {
         setVideos((prevVideos) => prevVideos.filter((video) => video.id !== videoId));
       } else {
