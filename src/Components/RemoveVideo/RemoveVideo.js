@@ -12,7 +12,7 @@ function RemoveVideo({ handleRemoveVideo }) {
         }
 
         try {
-            const response = await fetch(`https://video-collector-api.onrender.com/videos/${encodeURIComponent(title)}`, {
+            const response = await fetch(`https://video-collector-api.onrender.com/`, {
                 method: 'DELETE',
             });
 
