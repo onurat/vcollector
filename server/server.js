@@ -18,7 +18,7 @@ app.get("/", async (req, res) => {
     res.json(rows);
   } catch (error) {
     console.error("Error fetching videos:", error);
-    res.status(500).json({ result: "failure", message: "Failed to fetch videos" });
+    res.status(500).json({ result: "failure", message: "Failed to fetch videos", error: error.message });
   }
 });
 
@@ -42,7 +42,7 @@ app.post("/", async (req, res) => {
     res.status(201).json(result.rows[0]);
   } catch (error) {
     console.error('Error creating video:', error);
-    res.status(500).json({ error: 'Internal server error' });
+    res.status(500).json({ error: 'Internal server error', message: error.message });
   }
 });
 
@@ -60,7 +60,7 @@ app.get("/:id", async (req, res) => {
     res.json(rows[0]);
   } catch (error) {
     console.error("Error fetching video by ID:", error);
-    res.status(500).json({ result: "failure", message: "Failed to fetch video" });
+    res.status(500).json({ result: "failure", message: "Failed to fetch video", error: error.message });
   }
 });
 
@@ -74,7 +74,7 @@ app.delete("/:id", async (req, res) => {
     res.json({ result: "success", message: "Video deleted successfully" });
   } catch (error) {
     console.error("Error deleting video:", error);
-    res.status(500).json({ result: "failure", message: "Failed to delete video" });
+    res.status(500).json({ result: "failure", message: "Failed to delete video", error: error.message });
   }
 });
 
