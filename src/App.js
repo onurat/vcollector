@@ -19,16 +19,30 @@ function App() {
         console.error('Error fetching data from the server:', error);
       }
     };
-  
+
     fetchData();
   }, []);
-  
+
   const handleAdd = async (newVideo) => {
     try {
       const response = await axios.post('https://video-collector-api.onrender.com/', newVideo);
       setVideos((prevVideos) => [...prevVideos, response.data]);
     } catch (error) {
       console.error('Error adding video:', error);
+    }
+  };
+
+  const handleRemove = async (videoId) => {
+    try {
+      const response = await axios.delete(`https://video-collector-api.onrender.com/${videoId}`);
+      console.log('Delete Response:', response);
+      if (response.status === 200) {
+        setVideos((prevVideos) => prevVideos.filter((video) => video.id !== videoId));
+      } else {
+        console.error('Error removing video:', response.statusText);
+      }
+    } catch (error) {
+      console.error('Error removing video:', error);
     }
   };
 
